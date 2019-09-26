@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Wien Kaffee`,
+    description: `Bring ein Stück Wiener Kaffeekultur zu dir nach Hause. Wir liefern dir jeden Monat neu ausgewählte Kaffees direkt vor die Haustür.`,
+    author: `@holypoli`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,6 +14,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,

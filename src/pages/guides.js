@@ -1,5 +1,13 @@
-import React from "react"
+import React, { lazy } from "react"
 
-export default function guides() {
-  return <div>guides</div>
+import Layout from "../components/layout"
+
+const Guides = () => {
+  return (
+    <Layout>
+      <h1>Brew Guides</h1>
+    </Layout>
+  )
 }
+
+export default Guides

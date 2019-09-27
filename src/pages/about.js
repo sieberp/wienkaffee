@@ -1,5 +1,13 @@
-import React from "react"
+import React, { lazy } from "react"
 
-export default function about() {
-  return <div>about</div>
+import Layout from "../components/layout"
+
+const About = () => {
+  return (
+    <Layout>
+      <h1>About us</h1>
+    </Layout>
+  )
 }
+
+export default About

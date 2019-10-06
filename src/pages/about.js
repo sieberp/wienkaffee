@@ -1,11 +1,12 @@
-import React, { lazy } from "react"
+import React from "react"
 
 import Layout from "../components/layout"
+import Cart from "../components/cart"
 
 const About = () => {
   return (
     <Layout>
-      <h1>About us</h1>
+      <Cart></Cart>
     </Layout>
   )
 }

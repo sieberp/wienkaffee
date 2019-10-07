@@ -5,7 +5,11 @@
  */
 
 // You can delete this file if you're not using it
-// import React from "react"
-// import ProductsProvider from "./src/components/productsProvider"
-// import { Provider } from "./context"
-// export const wrapRootElement = ({ element }) => <Provider>{element}</Provider>
+import React from "react"
+import { StripeProvider } from "react-stripe-elements"
+
+export const wrapRootElement = ({ element }) => (
+  <StripeProvider apiKey="pk_test_kJ40rb7Wi7dypdKylrlSlveH00ospR5Eb6">
+    {element}
+  </StripeProvider>
+)

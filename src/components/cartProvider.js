@@ -66,7 +66,7 @@ const CartProvider = ({ children }) => {
         {
           stripeEmail: payload.stripeEmail,
           stripeAmt: total * 100, //it expects the price in cents
-          stripeToken: "tok_visa", //testing token, later we would use payload.data.token
+          stripeToken: payload.data.token, //testing token, later we would use payload.data.token
           stripeIdempotency: uuid(),
         },
         {

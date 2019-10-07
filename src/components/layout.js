@@ -9,7 +9,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, StaticQuery } from "gatsby"
 import styled from "styled-components"
-import { StripeProvider } from "react-stripe-elements"
 
 import Header from "./header"
 import "./layout.css"
@@ -30,24 +29,22 @@ const Layout = ({ children }) => {
       `}
       render={data => (
         <>
-          <StripeProvider apiKey="pk_test_kJ40rb7Wi7dypdKylrlSlveH00ospR5Eb6">
-            <ProductsProvider>
-              <CartProvider>
-                <Header siteTitle={data.site.siteMetadata.title} />
-                <div
-                  style={{
-                    margin: `0 auto`,
-                    maxWidth: 960,
-                    padding: `0px 1.0875rem 1.45rem`,
-                    paddingTop: 0,
-                  }}
-                >
-                  <main>{children}</main>
-                  <footer>© {new Date().getFullYear()}</footer>
-                </div>
-              </CartProvider>
-            </ProductsProvider>
-          </StripeProvider>
+          <ProductsProvider>
+            <CartProvider>
+              <Header siteTitle={data.site.siteMetadata.title} />
+              <div
+                style={{
+                  margin: `0 auto`,
+                  maxWidth: 960,
+                  padding: `0px 1.0875rem 1.45rem`,
+                  paddingTop: 0,
+                }}
+              >
+                <main>{children}</main>
+                <footer>© {new Date().getFullYear()}</footer>
+              </div>
+            </CartProvider>
+          </ProductsProvider>
         </>
       )}
     />

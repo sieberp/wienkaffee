@@ -1,14 +1,28 @@
 import React, { useContext } from "react"
+import styled from "styled-components"
+
 import { CartContext } from "./cartProvider"
 import { ProductsContext } from "./productsProvider"
+import { Link } from "gatsby"
 
 const Cart = () => {
-  const { contents } = useContext(CartContext)
+  const { contents, open, toggle, total } = useContext(CartContext)
   const products = useContext(ProductsContext)
-  console.log(products)
   return (
-    <React.Fragment>
-      <h1>Cart</h1>
+    <div
+      style={{
+        position: "absolute",
+        width: "300px",
+        height: "100vh",
+        top: "0px",
+        right: open ? "0px" : "-300px",
+        zIndex: 2,
+        backgroundColor: "white",
+        transition: "all 0.5s ",
+        boxShadow: "4px 4px 4px 4px #333",
+      }}
+    >
+      <h1 onClick={() => toggle()}>Cart</h1>
       {contents.map(content => {
         const currentProduct = products.find(
           product => product.node.id === content[0]
@@ -20,7 +34,9 @@ const Cart = () => {
           </div>
         )
       })}
-    </React.Fragment>
+      <span>Total: {total}</span>
+      <Link to="/checkout">Go to checkout</Link>
+    </div>
   )
 }
 

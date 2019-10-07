@@ -51,6 +51,7 @@ const Products = () => {
           {console.log(product.node.picture)}
           <Img sizes={product.node.picture.sizes}></Img>
           <h3>{product.node.name}</h3>
+          <h3>{product.node.price}</h3>
           <button onClick={() => add(product.node.id)}>Add to cart</button>
         </ProductCard>
       ))}

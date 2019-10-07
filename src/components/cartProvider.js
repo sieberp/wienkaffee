@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import uuid from "uuid"
+import { ProductsContext } from "./productsProvider"
 
 export const CartContext = React.createContext(null)
 
 const CartProvider = ({ children }) => {
+  const [open, setOpen] = useState(false)
+  const products = useContext(ProductsContext)
+
   const [contents, setContents] = useState(() => {
     let localCart
     try {
@@ -36,6 +41,11 @@ const CartProvider = ({ children }) => {
     })
   }
 
+  const total = contents.reduce((sum, [id, quantity]) => {
+    const currentProduct = products.find(product => product.node.id === id)
+    return sum + currentProduct.node.price * quantity
+  }, 0)
+
   /** Increments item with `id` by `quantity`, which defaults to 0 */
   function add(id, quantity = 1) {
     const currentItem = contents.find(item => item[0] === id)
@@ -43,8 +53,34 @@ const CartProvider = ({ children }) => {
     set(id, quantity + currentQuantity)
   }
 
+  function toggle() {
+    setOpen(!open)
+  }
+
+  async function pay(payload) {
+    let response
+    try {
+      response = await fetch(
+        "https://wienkaffee.netlify.com/.netlify/functions/index",
+        {
+          stripeEmail: payload.stripeEmail,
+          stripeAmt: total * 100, //it expects the price in cents
+          stripeToken: "tok_visa", //testing token, later we would use payload.data.token
+          stripeIdempotency: uuid(),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then(res => console.log(res))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ contents, add }}>
+    <CartContext.Provider value={{ contents, add, toggle, open, total, pay }}>
       {children}
     </CartContext.Provider>
   )

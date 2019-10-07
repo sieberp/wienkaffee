@@ -61,7 +61,7 @@ const CartProvider = ({ children }) => {
     let response
     try {
       response = await fetch(
-        "https://wienkaffee.netlify.com/.netlify/functions/index",
+        "/.netlify/functions/index",
         {
           stripeEmail: payload.stripeEmail,
           stripeAmt: total * 100, //it expects the price in cents

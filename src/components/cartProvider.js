@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import uuid from "uuid"
 import { ProductsContext } from "./productsProvider"
+import Axios from "axios"
 
 export const CartContext = React.createContext(null)
 
@@ -60,8 +61,8 @@ const CartProvider = ({ children }) => {
   async function pay(payload) {
     let response
     try {
-      response = await fetch(
-        "/.netlify/functions/index",
+      response = await Axios.post(
+        "https://wienkaffee.netlify.com/.netlify/functions/index",
         {
           stripeEmail: payload.stripeEmail,
           stripeAmt: total * 100, //it expects the price in cents

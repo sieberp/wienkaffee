@@ -18,7 +18,13 @@ const Header = ({ siteTitle }) => (
         textAlign: `center`,
       }}
     >
-      <h1 style={{ margin: 0, fontFamily: "Roboto" }}>
+      <h1
+        style={{
+          margin: 0,
+          fontFamily: "Alegreya, serif",
+          fontWeight: "lighter",
+        }}
+      >
         <Link
           to="/"
           style={{

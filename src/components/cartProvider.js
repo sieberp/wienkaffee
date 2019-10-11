@@ -58,6 +58,12 @@ const CartProvider = ({ children }) => {
     setOpen(!open)
   }
 
+  function remove(id) {
+    setContents(state => {
+      return state.filter(item => item[0] !== id)
+    })
+  }
+
   async function pay(payload) {
     let response
     try {
@@ -66,7 +72,7 @@ const CartProvider = ({ children }) => {
         {
           stripeEmail: payload.stripeEmail,
           stripeAmt: total * 100, //it expects the price in cents
-          stripeToken: payload.data.token, //testing token, later we would use payload.data.token
+          stripeToken: "tok_visa", //testing token, later we would use payload.data.token
           stripeIdempotency: uuid(),
         },
         {
@@ -81,7 +87,9 @@ const CartProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ contents, add, toggle, open, total, pay }}>
+    <CartContext.Provider
+      value={{ contents, add, toggle, open, total, pay, remove }}
+    >
       {children}
     </CartContext.Provider>
   )

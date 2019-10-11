@@ -200,7 +200,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: Alegreya, serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -321,6 +321,9 @@ h6 {
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
+}
+body {
+  font-family: Alegreya, serif;
 }
 hgroup {
   margin-left: 0;

@@ -14,6 +14,7 @@ import Header from "./header"
 import "./layout.css"
 import ProductsProvider from "./productsProvider"
 import CartProvider from "./cartProvider"
+import Cart from "./cart"
 
 const Layout = ({ children }) => {
   return (
@@ -40,7 +41,10 @@ const Layout = ({ children }) => {
                   paddingTop: 0,
                 }}
               >
-                <main>{children}</main>
+                <main>
+                  <Cart></Cart>
+                  {children}
+                </main>
                 <footer>© {new Date().getFullYear()}</footer>
               </div>
             </CartProvider>

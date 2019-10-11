@@ -11,32 +11,58 @@ const ShopGrid = styled.main`
 `
 
 const ProductCard = styled.div`
+  text-align: center;
   margin: 20px 40px;
   padding: 10px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Algreya, serif;
   font-kerning: 1px;
   font-weight: lighter;
+  overflow: hidden;
   h3 {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-family: Algreya, serif;
     font-weight: normal;
     margin-top: 10px;
     margin-bottom: 0.2rem;
   }
   p {
     margin-bottom: 0.5rem;
+    font-family: Algreya, serif;
     text-align: center;
     font-weight: lighter;
   }
   .price {
+    position: relative;
+    top: -100px;
+    opacity: 0;
     :before {
       content: "€";
       margin-right: 1.5px;
     }
   }
+  :hover button,
+  :hover .price {
+    transition: all 0.4s;
+    top: -150px;
+    opacity: 1;
+  }
+`
+const CartButton = styled.button`
+  display: block;
+  font-weight: lighter;
+  color: #333;
+  border: 0.5px solid #333;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  position: relative;
+  left: 35%;
+  opacity: 0;
+  cursor: pointer;
+  top: -100px;
   :hover {
-    cursor: pointer;
-    color: darkred;
+    color: #333;
+    background-color: #fff;
   }
 `
 
@@ -48,11 +74,12 @@ const Products = () => {
     <ShopGrid>
       {products.map(product => (
         <ProductCard key={product.node.id}>
-          {console.log(product.node.picture)}
           <Img sizes={product.node.picture.sizes}></Img>
           <h3>{product.node.name}</h3>
-          <h3>{product.node.price}</h3>
-          <button onClick={() => add(product.node.id)}>Add to cart</button>
+          <CartButton onClick={() => add(product.node.id)}>
+            Hinzufügen
+          </CartButton>
+          <span className="price">{product.node.price}</span>
         </ProductCard>
       ))}
     </ShopGrid>

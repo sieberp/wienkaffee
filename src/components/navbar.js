@@ -28,7 +28,6 @@ const Navbar = () => {
       <NavLink to="/about">Wofür wir stehen</NavLink>
       <NavLink to="/guides">Brew Guides</NavLink>
       <button onClick={() => toggle()}>Cart</button>
-      <Cart></Cart>
     </nav>
   )
 }

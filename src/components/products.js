@@ -103,7 +103,7 @@ const Products = () => {
           <CartButton className='hover-up' onClick={() => add(product.node.id)}>
             Hinzufügen
           </CartButton>
-          <ProductLink className='hover-up'>
+          <ProductLink className='hover-up' to={'/products/' + product.node.slug}>
             Mehr Info
           </ProductLink>
         </ProductCard>

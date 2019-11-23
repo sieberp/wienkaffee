@@ -81,6 +81,7 @@ const productsQuery = graphql`
             description
           }
           price
+          slug
           roaster
           roasttype
         }

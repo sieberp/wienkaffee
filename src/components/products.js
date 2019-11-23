@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import Img from "gatsby-image"
+import { Link } from 'gatsby'
 import styled from "styled-components"
 
 import { ProductsContext } from "./productsProvider"
@@ -41,9 +42,8 @@ const ProductCard = styled.div`
       margin-right: 1.5px;
     }
   }
-  :hover button,
-  :hover .price {
-    transition: all 0.4s;
+   :hover .hover-up {
+    transition: all 0.6s;
     top: -150px;
     opacity: 1;
   }
@@ -52,34 +52,60 @@ const CartButton = styled.button`
   display: block;
   font-weight: lighter;
   color: #333;
+  background-color: #fff;
   border: 0.5px solid #333;
-  border-radius: 5px;
   font-size: 0.7rem;
   position: relative;
-  left: 35%;
+  left: 50%;
+  transform: translate(-50%);
   opacity: 0;
   cursor: pointer;
   top: -100px;
   :hover {
-    color: #333;
-    background-color: #fff;
+    color: #fff;
+    background-color: #333;
+  }
+`
+
+const ProductLink = styled(Link)`
+  display: block;
+  font-weight: lighter;
+  text-decoration: none;
+  background-color: #fff;
+  color: #333;
+  border: 0.5px solid #333;
+  font-size: 0.7rem;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  opacity: 0;
+  padding: 0 20px;
+  margin: 5px 0; 
+  width: fit-content;
+  cursor: pointer;
+  top: -50px;
+  :hover {
+    color: #fff;
+    background-color: #333;
   }
 `
 
 const Products = () => {
   const products = useContext(ProductsContext)
   const { add } = useContext(CartContext)
-  console.log(add)
   return (
     <ShopGrid>
       {products.map(product => (
         <ProductCard key={product.node.id}>
           <Img sizes={product.node.picture.sizes}></Img>
           <h3>{product.node.name}</h3>
-          <CartButton onClick={() => add(product.node.id)}>
+          <span>€ {product.node.price.toFixed(2).replace(/\./g, ',')}</span>
+          <CartButton className='hover-up' onClick={() => add(product.node.id)}>
             Hinzufügen
           </CartButton>
-          <span className="price">{product.node.price}</span>
+          <ProductLink className='hover-up'>
+            Mehr Info
+          </ProductLink>
         </ProductCard>
       ))}
     </ShopGrid>

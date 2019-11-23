@@ -47,6 +47,10 @@ const CartProvider = ({ children }) => {
     return sum + currentProduct.node.price * quantity
   }, 0)
 
+  const totalQuantity = contents.reduce((sum, [_, quantity]) => {
+    return sum + quantity
+  }, 0)
+
   /** Increments item with `id` by `quantity`, which defaults to 0 */
   function add(id, quantity = 1) {
     const currentItem = contents.find(item => item[0] === id)
@@ -88,7 +92,7 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ contents, add, toggle, open, total, pay, remove }}
+      value={{ contents, add, toggle, open, total, pay, remove, totalQuantity }}
     >
       {children}
     </CartContext.Provider>

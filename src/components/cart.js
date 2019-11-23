@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 const StyledCart = styled.div`
-  position: absolute;
+  position: fixed;
   width: 350px;
   height: 100vh;
   top: 0px;
@@ -119,45 +119,45 @@ const Cart = () => {
         width: open ? "350px" : "0",
       }}
     >
-      <CartTitle onClick={() => toggle()}>
-        Einkaufswagen <span className="arrow">→</span>
+      <CartTitle id="CartTitle" onClick={() => toggle()}>
+        Einkaufswagen <span id='arrow' className="arrow">→</span>
       </CartTitle>
       {total === 0 ? (
         <div>Dein Einkaufswagen ist leer.</div>
       ) : (
-        <React.Fragment>
-          {contents.map(content => {
-            const currentProduct = products.find(
-              product => product.node.id === content[0]
-            )
-            return (
-              <CartItem key={currentProduct.node.id}>
-                <ProductThumbnail
-                  sizes={currentProduct.node.picture.sizes}
-                ></ProductThumbnail>
-                <div className="info">
-                  <h3>{currentProduct.node.name}</h3>
-                  <span className="price">
-                    Preis: {content[1] * currentProduct.node.price}€
+          <React.Fragment>
+            {contents.map(content => {
+              const currentProduct = products.find(
+                product => product.node.id === content[0]
+              )
+              return (
+                <CartItem key={currentProduct.node.id}>
+                  <ProductThumbnail
+                    sizes={currentProduct.node.picture.sizes}
+                  ></ProductThumbnail>
+                  <div className="info">
+                    <h3>{currentProduct.node.name}</h3>
+                    <span className="price">
+                      Preis: {content[1] * currentProduct.node.price}€
                   </span>
 
-                  <span className="quantity">Anzahl: {content[1]}</span>
-                </div>
-                <span
-                  className="delete"
-                  onClick={() => remove(currentProduct.node.id)}
-                >
-                  x
+                    <span className="quantity">Anzahl: {content[1]}</span>
+                  </div>
+                  <span
+                    className="delete"
+                    onClick={() => remove(currentProduct.node.id)}
+                  >
+                    x
                 </span>
-              </CartItem>
-            )
-          })}
-          <TotalPrice>
-            Gesamtpreis: <span className="total">{total}€</span>
-          </TotalPrice>
-          <CheckoutLink to="/checkout">Go to checkout</CheckoutLink>
-        </React.Fragment>
-      )}
+                </CartItem>
+              )
+            })}
+            <TotalPrice>
+              Gesamtpreis: <span className="total">{total}€</span>
+            </TotalPrice>
+            <CheckoutLink to="/checkout">Go to checkout</CheckoutLink>
+          </React.Fragment>
+        )}
     </StyledCart>
   )
 }

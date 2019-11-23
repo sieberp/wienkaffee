@@ -11,8 +11,24 @@ const NavLink = styled(Link)`
   text-decoration: none;
 `
 
+const CartButton = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  :after {
+    content: "${props => props.quantity}";
+    color: #eee;
+    vertical-align: super;
+    font-size: 70%;
+    margin: 2px;
+    border-radius: 50%;
+    padding: 2px 4px 2px 4px;
+    background: #76b6bc;
+  }
+`
+
 const Navbar = () => {
-  const { toggle } = useContext(CartContext)
+  const { toggle, totalQuantity } = useContext(CartContext)
   return (
     <nav
       style={{
@@ -27,7 +43,7 @@ const Navbar = () => {
       <NavLink to="/shop">Kaffees</NavLink>
       <NavLink to="/about">Wofür wir stehen</NavLink>
       <NavLink to="/guides">Brew Guides</NavLink>
-      <button onClick={() => toggle()}>Cart</button>
+      <CartButton onClick={() => toggle()} quantity={totalQuantity}>Cart</CartButton>
     </nav>
   )
 }

@@ -10,19 +10,13 @@ const IndexPage = () => (
   <StaticQuery
     query={graphql`
       query ImageQuery {
-        allFile(
-          filter: { id: { eq: "074082e1-fb83-5dbe-b25c-c5bf5bdbea49" } }
-        ) {
-          edges {
-            node {
-              childImageSharp {
-                fluid(maxWidth: 960) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+        file(id: {eq: "074082e1-fb83-5dbe-b25c-c5bf5bdbea49"}) {
+          childImageSharp {
+            fluid(maxWidth: 960) {
+              ...GatsbyImageSharpFluid
             }
-          }
-        }
+           }
+         }
       }
     `}
     render={data => {
@@ -34,7 +28,7 @@ const IndexPage = () => (
             style={{
               height: "300px",
             }}
-            fluid={data.allFile.edges[0].node.childImageSharp.fluid}
+            fluid={data.file.childImageSharp.fluid}
             imgStyle={{
               objectPosition: "50% 95%",
             }}

@@ -10,7 +10,7 @@ const IndexPage = () => (
   <StaticQuery
     query={graphql`
       query ImageQuery {
-        file(id: {eq: "074082e1-fb83-5dbe-b25c-c5bf5bdbea49"}) {
+        file(name: {eq: "nathan-dumlao-etkmWcqtZzg-unsplash"}) {
           childImageSharp {
             fluid(maxWidth: 960) {
               ...GatsbyImageSharpFluid

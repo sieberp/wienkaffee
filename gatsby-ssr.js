@@ -7,9 +7,12 @@
 // You can delete this file if you're not using it
 import React from 'react'
 import CartContext from './src/components/cartProvider'
+import ProductContext from './src/components/productsProvider'
 
 export const wrapRootElement = ({ element }) => (
-  <CartContext>
-    {element}
-  </CartContext>
+  <ProductContext>
+    <CartContext>
+      {element}
+    </CartContext>
+  </ProductContext>
 )

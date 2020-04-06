@@ -11,8 +11,6 @@ import CartContext from './src/components/cartProvider'
 
 export const wrapRootElement = ({ element }) => (
   <StripeProvider apiKey="pk_test_kJ40rb7Wi7dypdKylrlSlveH00ospR5Eb6">
-    <CartContext>
-      {element}
-    </CartContext>
+    {element}
   </StripeProvider>
 )

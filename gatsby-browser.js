@@ -8,9 +8,14 @@
 import React from "react"
 import { StripeProvider } from "react-stripe-elements"
 import CartContext from './src/components/cartProvider'
+import ProductsContext from './src/components/productsProvider'
 
 export const wrapRootElement = ({ element }) => (
   <StripeProvider apiKey="pk_test_kJ40rb7Wi7dypdKylrlSlveH00ospR5Eb6">
-    {element}
+    <ProductsContext>
+      <CartContext>
+        {element}
+      </CartContext>
+    </ProductsContext>
   </StripeProvider>
 )

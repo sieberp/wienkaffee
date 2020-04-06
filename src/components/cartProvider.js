@@ -56,6 +56,7 @@ const CartProvider = ({ children }) => {
     const currentItem = contents.find(item => item[0] === id)
     const currentQuantity = currentItem ? currentItem[1] : 0
     set(id, quantity + currentQuantity)
+
   }
 
   function toggle() {

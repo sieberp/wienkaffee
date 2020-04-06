@@ -5,3 +5,10 @@
  */
 
 // You can delete this file if you're not using it
+import CartContext from './src/components/cartProvider'
+
+export const wrapRootElement = ({ element }) => (
+  <CartContext>
+    {element}
+  </CartContext>
+)

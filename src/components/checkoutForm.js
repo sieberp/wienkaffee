@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react"
 import { injectStripe, CardElement } from "react-stripe-elements"
+import styled from 'styled-components'
 import { CartContext } from "../components/cartProvider"
 
 const CheckoutForm = props => {
   const { pay } = useContext(CartContext)
   const [email, setEmail] = useState("")
+
   const handleChange = event => {
     setEmail(event.target.value)
-    console.log(email)
   }
   const handleSubmit = event => {
     event.preventDefault()

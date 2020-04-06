@@ -78,7 +78,6 @@ const productsQuery = graphql`
             sizes(maxWidth: 960) {
               ...GatsbyContentfulSizes
             }
-            description
           }
           price
           slug

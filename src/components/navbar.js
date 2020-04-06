@@ -9,21 +9,30 @@ import { CartContext } from "./cartProvider"
 const NavLink = styled(Link)`
   color: #444;
   text-decoration: none;
+  transition: transform 0.3s;
+  :hover {
+    color: #666;
+    transform: scale(1.05);
+  }
 `
 
 const CartButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  transition: transform 0.3s;
+  :hover {
+    color: #666;
+    transform: scale(1.05);
+  }
   :after {
     content: "${props => props.quantity}";
+    margin-left: 3px;
     color: #eee;
-    vertical-align: super;
-    font-size: 70%;
-    margin: 2px;
+    margin: 3px;
     border-radius: 50%;
     padding: 2px 4px 2px 4px;
-    background: #76b6bc;
+    background: #555;
   }
 `
 
@@ -43,7 +52,7 @@ const Navbar = () => {
       <NavLink to="/shop">Kaffees</NavLink>
       <NavLink to="/about">Wofür wir stehen</NavLink>
       <NavLink to="/guides">Brew Guides</NavLink>
-      <CartButton onClick={() => toggle()} quantity={totalQuantity}>Cart</CartButton>
+      <CartButton id="cart" onClick={() => toggle()} quantity={totalQuantity}>Cart</CartButton>
     </nav>
   )
 }

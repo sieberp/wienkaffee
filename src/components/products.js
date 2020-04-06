@@ -42,9 +42,15 @@ const ProductCard = styled.div`
       margin-right: 1.5px;
     }
   }
-   :hover .hover-up {
+   :hover button {
+    top: -160px;
     transition: all 0.6s;
+    opacity: 1;
+   }
+
+   :hover a {
     top: -150px;
+    transition: all 0.6s;
     opacity: 1;
   }
 `
@@ -53,14 +59,16 @@ const CartButton = styled.button`
   font-weight: lighter;
   color: #333;
   background-color: #fff;
-  border: 0.5px solid #333;
-  font-size: 0.7rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 5px #333;
+  font-size: 1rem;
   position: relative;
   left: 50%;
   transform: translate(-50%);
   opacity: 0;
   cursor: pointer;
-  top: -100px;
+  top: -200px;
   :hover {
     color: #fff;
     background-color: #333;
@@ -73,8 +81,10 @@ const ProductLink = styled(Link)`
   text-decoration: none;
   background-color: #fff;
   color: #333;
-  border: 0.5px solid #333;
-  font-size: 0.7rem;
+  /* border: 1px solid #333; */
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #333;
+  font-size: 1rem;
   position: relative;
   left: 50%;
   transform: translate(-50%);

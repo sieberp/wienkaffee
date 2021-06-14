@@ -13,7 +13,6 @@ const SingleProductGrid = styled.div`
   "pic pic buy buy";
 `
 
-
 const ProductImage = styled(Img)`
   width: 300px;
   display: inline-block;

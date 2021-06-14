@@ -1,9 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
 const path = require(`path`);
 const slash = require(`slash`);
 exports.createPages = ({ graphql, actions }) => {
@@ -25,9 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
     if (result.errors) {
       console.log("Error retrieving contentful data", result.errors);
     }
-    // Resolve the paths to our template
     const productTemplate = path.resolve("./src/components/productPage.js");
-    // Then for each result we create a page.
     result.data.allContentfulProduct.edges.forEach(edge => {
       createPage({
         path: `/products/${edge.node.slug}/`,
